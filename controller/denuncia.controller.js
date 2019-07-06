@@ -1,9 +1,14 @@
 const Denuncia = require('../models/denuncia.model');
 const denunciaCtrl = {};
+const mongoose =  require('mongoose');
+const User = mongoose.model('User');
 
 denunciaCtrl.index = async(req,res)=>{
-    const denuncias = await Denuncia.find({"delete":false});
-    res.json({denuncias});
+    const {user} = req.params
+    console.log(user);
+    const denuncias = await Denuncia.find({user:user});
+    
+    res.json(denuncias);
 };
 
 denunciaCtrl.store = async (req,res)=>{
