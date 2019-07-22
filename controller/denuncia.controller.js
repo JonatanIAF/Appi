@@ -40,7 +40,8 @@ denunciaCtrl.delete = async(req,res)=>{
         $set:{delete:true}
     };
     const { id } = req.params;
-    await Denuncia.findByIdAndUpdate(id,update);
+    //await Denuncia.findByIdAndUpdate(id,update);
+    await Denuncia.findByIdAndDelete(id);
     res.json({
         status:"was deleted successfuly"
     });
